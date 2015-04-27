@@ -8,8 +8,8 @@
   ],
   "main": "x-wysihtml.html",
   "dependencies": {
-    "polymer": "Polymer/polymer#^0.5.4"
+    "polymer": "Polymer/polymer#^0.5.4",
+    "wysihtml": "~0.4.17"
   },
-  "devDependencies": {
-  }
+  "devDependencies": {}
 }
