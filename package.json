@@ -1,0 +1,20 @@
+{
+  "name": "x-wysihtml",
+  "version": "0.0.1",
+  "description": "Wysihtml web component",
+  "main": "index.js",
+  "dependencies": {
+    "polyserve": "^0.3.0"
+  },
+  "devDependencies": {
+    "polyserve": "^0.3.0"
+  },
+  "scripts": {
+    "start": "node ./node_modules/polyserve/bin/polyserve"
+  },
+  "keywords": [
+    "wysihtml"
+  ],
+  "author": "Anton Vasiljev",
+  "license": "MIT"
+}
