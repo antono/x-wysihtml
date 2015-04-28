@@ -8,72 +8,63 @@ Element providing solution to no problem in particular.
     <x-wysihtml></x-wysihtml>
 
 @element x-wysihtml
-@blurb Element providing solution to no problem in particular.
+@blurb Element providing wysihtml editor
 @status alpha
 @homepage http://antono.github.io/x-wysihtml
 -->
-<polymer-element name="x-wysihtml" attributes="author fancy">
+
+<polymer-element name="x-wysihtml" attributes="placeholder autofocus toolbar">
   <template>
     <link rel="stylesheet" href="x-wysihtml.css">
-    <h1>Hello from x-wysihtml</h1>
-    <content></content>
+    <link rel="stylesheet" href="bootstrap-wysihtml5.css">
+
+    <textarea id="editor" placeholder="{{placeholder}}" autofocus?="{{autofocus}}"></textarea>
   </template>
+
+  <script src="wysihtml5-0.3.0.js"></script>
+  <script src="rules-0.3.0.js"></script>
+
   <script>
     Polymer({
       /**
-       * The `author` attribute sets an initial author
+       * `toolbar` controls rendering of toolbar
        *
-       * @attribute author
-       * @type string
-       * @default 'Dimitri Glazkov'
-       */
-      author: 'Dimitri Glazkov',
-
-      /**
-       * `fancy` is a property that does something fancy.
-       *
-       * @property fancy
-       * @type bool
+       * @property toolbar
+       * @type boolean
        * @default false
        */
-      fancy: false,
+      toolbar: false,
+
+      /**
+       * `autofocus` controls autofocus
+       *
+       * @property autofocus
+       * @type boolean
+       * @default false
+       */
+      autofocus: false,
+
+      /*
+       * Private properties
+       */
+      editor: null,
+
+      options: {
+        "font-styles": true, //Font styling, e.g. h1, h2, etc. Default true
+        "emphasis": true, //Italics, bold, etc. Default true
+        "lists": true, //(Un)ordered lists, e.g. Bullets, Numbers. Default true
+        "html": false, //Button which allows you to edit the generated HTML. Default false
+        "link": true, //Button to insert a link. Default true
+        "image": true, //Button to insert an image. Default true,
+        "color": false //Button to change color of font
+      },
 
       ready: function () {
-        // Ready is a lifecycle callback.
-        // You can do setup work in here.
-        // More info: http://www.polymer-project.org/docs/polymer/polymer.html#lifecyclemethods
       },
 
-      /**
-       * The `sayHello` method will return a greeting.
-       *
-       * @method sayHello
-       * @param {String} greeting Pass in a specific greeting.
-       * @return {String} Returns a string greeting.
-       */
-      sayHello: function (greeting) {
-        var response = greeting || 'Hello World!';
-        return 'x-wysihtml says, ' + response;
+      domReady: function () {
+        this.editor = new wysihtml5.Editor(this.$.editor);
       },
-
-      /**
-       * The `x-wysihtml-lasers-success` event is fired whenever we
-       * call fireLasers.
-       *
-       * @event x-wysihtml-lasers-success
-       * @param {Object} detail
-       *   @param {string} detail.sound An amazing sound.
-       */
-
-      /**
-       * The `fireLasers` method will fire the lasers. At least
-       * it will dispatch an event that claims lasers were fired :)
-       *
-       * @method fireLasers
-       */
-      fireLasers: function () {
-        this.fire('x-wysihtml-lasers-success', { sound: 'Pew pew pew!' });
-      }
     });
   </script>
 </polymer-element>
