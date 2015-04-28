@@ -1,7 +1,11 @@
 # x-wysihtml
 
-See the [component page](http://antono.github.io/x-wysihtml) for more information.
+wysithml5 as web component
 
-## Getting Started
+## Development
 
-We've put together a [guide for x-wysihtml](http://www.polymer-project.org/docs/start/reusableelements.html) to help get you rolling.
+    npm install
+    bower install
+    npm start
+
+Visit http://localhost:8080/components/x-wysihtml/demo.html
